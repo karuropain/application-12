@@ -1,32 +1,50 @@
 <!DOCTYPE HTML>
 <html lang="ja">
+<html>
   <head>
   </head>
 
   <body>
 <!--　投稿一覧　-->
     <h1>Books</h1>
+
     <table>
       <thead>
         <tr>
-          
+          <th>Title</th>
+          <th>Body</th>
+          <th colspan="3"></th>
         </tr>
-        
       </thead>
       
+<% @books.each do |list| %>
+      <tbody>
+        <tr>
+          <td>
+            <span><%= list.title %></span>
+            <span><%= list.body %></span>
+            <span><%= link_to 'Show', list_path(list:id) %></span>
+            <span><%= link_to 'Edit', edit_list_path(list:id) %></span>
+            <span><%= link_to 'Destroy', list_path(list:id) %></span>
+          </td>
+        </tr>
+      </tbody>
+      
     </table>
+<% end %>
 
 <!--　新規投稿　-->
-<h2>New boos</h2>
-<%= form_with model: @books do |f| %>
-<h3>title</h3>
+<h2>New book</h2>
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+<p>title</p>
 <%= f.text_field :title %>
 
-<h3>Body</h3>
+<p>Body</p>
 <%= f.text_area :body %>
 
-<%= f.text_submit 'Create Book' %>
+<p><%= f.submit 'Create Book' %></p>
 
 <% end %>
 
   </body>
+</html>
