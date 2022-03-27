@@ -22,16 +22,24 @@
         <tr>
           <td>
             <span><%= list.title %></span>
+          </td>
+          <td>
             <span><%= list.body %></span>
-            <span><%= link_to 'Show', list_path(@books.ids) %></span>
-            <span><%= link_to 'Edit', edit_list_path(@books.ids) %></span>
-            <span><%= link_to 'Destroy', list_path(@books.ids), method: :delete %></span>
+          </td>
+          <td>
+            <span><%= link_to 'Show', list_path(list.id) %></span>
+          </td>
+          <td>
+            <span><%= link_to 'Edit', edit_list_path(list.id) %></span>
+          </td>
+          <td>
+            <span><%= link_to 'Destroy', list_path(list.id), method: :delete %></span>
           </td>
         </tr>
       </tbody>
-      
+<% end %>      
     </table>
-<% end %>
+
 
 <!--　新規投稿　-->
 <h2>New book</h2>

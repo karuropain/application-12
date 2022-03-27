@@ -41,6 +41,7 @@ p, ol, ul, td {
     margin: 33px;
 }
 
+
 table {
     display: table;
     border-collapse: separate;
@@ -66,5 +67,14 @@ tr {
     display: table-row;
     vertical-align: inherit;
     border-color: inherit;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+div {
+    display: block;
 }
 
