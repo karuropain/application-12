@@ -4,12 +4,17 @@ class ListsController < ApplicationController
   end
   
   def create
-    book = Book.new(book_params)
-    book.save
-    redirect_to '/books'
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to list_path(@book.id)
+    else
+      @books = Book.all
+      render :index
+    end
   end
   
   def index
+    @book = Book.new
     @books = Book.all
   end
 
@@ -28,15 +33,19 @@ class ListsController < ApplicationController
   end
   
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to list_path(book.id)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to list_path(@book.id)
+    else
+      @book = Book.find(params[:id])
+      render :edit
+    end
   end
   
   private
   # ストロングパラメータ
   def book_params
-    params.permit(:title, :body)
-    #.require(:book)
+    params.require(:book).permit(:title, :body)
   end
+  
 end
