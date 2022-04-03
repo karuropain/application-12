@@ -37,7 +37,6 @@ class ListsController < ApplicationController
     if @book.update(book_params)
       redirect_to list_path(@book.id)
     else
-      @book = Book.find(params[:id])
       render :edit
     end
   end

@@ -1,22 +1,33 @@
 <body>
   <h1>Editing Book</h1>
+
+<div id="error_explanation">
 <% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
+  <h2>
+    <%= @book.errors.count %> errors prohibited this book from being saved:
+  </h2>
   <ul>
     <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
 <% end %>
+</div>
 
 <%= form_with model: @book, url: update_list_path(@book.id), method: :patch do |f| %>
-<p>title</p>
+
+
+<div class="field">
+<label for="book_title">Title</label>
 <%= f.text_field :title %>
+</div>
 
-<p>Body</p>
+<div class="field">
+<label for="book_book">Body</label>
 <%= f.text_area :body %>
+</div>
 
-<p><%= f.submit 'Update Book' %></p>
+<div class="actions"><%= f.submit 'Update Book' %></div>
 
 <% end %>
 
