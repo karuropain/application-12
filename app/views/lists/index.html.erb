@@ -3,7 +3,7 @@
 <html>
   <head>
   </head>
-
+<!--削除時メッセージ  Book was successfully destroyed.-->
   <body>
 <!--　投稿一覧　-->
     <h1>Books</h1>
@@ -33,7 +33,7 @@
             <span><%= link_to 'Edit', edit_list_path(list.id) %></span>
           </td>
           <td>
-            <span><%= link_to 'Destroy', list_path(list.id), method: :delete %></span>
+            <span><%= link_to 'Destroy', list_path(list.id), method: :delete, data: { confirm: "Are you sure?" }%></span>
           </td>
         </tr>
       </tbody>
@@ -53,13 +53,18 @@
 <% end %>
 
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
-<p>Title</p>
-<%= f.text_field :title %>
+<div class="field">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
 
-<p>Body</p>
-<%= f.text_area :body %>
+<div class="field">
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+</div>
 
-<p><%= f.submit 'Create Book' %></p>
+<div class="actions"><%= f.submit 'Create Book' %></div>
+
 
 <% end %>
 
