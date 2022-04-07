@@ -130,3 +130,7 @@ div.field, div.actions {
     background-color: red;
     display: table;
 }
+
+a {
+    color: #000;
+}

@@ -1,6 +1,9 @@
 <body>
-  
-  Book was successfully created.
+  <p id ="notice">
+  <% flash.each do |message_type, message| %>
+    <%= message %>
+  <% end %>
+  </p>
   <p><strong>Title:</strong><%= @book.title %></p>
   <p><strong>Body:</strong><%= @book.body %></p>
   <%= link_to "Edit", edit_list_path(@book.id) %>
